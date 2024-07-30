@@ -1,3 +1,6 @@
 /docs.sillytavern.app/
 /.env
 .idea
+/output
+__pycache__
+/translated

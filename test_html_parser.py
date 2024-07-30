@@ -188,3 +188,7 @@ class TestHTMLParser(unittest.TestCase):
             html_parser = HTMLParser(user_case['html'])
             html_parser.parse()
             self.assertEqual(html_parser.tag_list, user_case['tags'])
+
+
+if __name__ == '__main__':
+    unittest.main()
