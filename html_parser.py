@@ -1,9 +1,7 @@
-from bs4 import BeautifulSoup, NavigableString, Tag
+from bs4 import BeautifulSoup, NavigableString
 import re
-from langchain_core.prompts import ChatPromptTemplate
-from langchain_core.output_parsers import StrOutputParser
 import yaml
-from gpt import translate as gpt_translate
+from utils.gpt import translate as gpt_translate
 
 
 class HTMLParser:
@@ -67,7 +65,7 @@ class HTMLParser:
             if parent and text_new:
                 # Check if the element is still part of the parent's contents
                 if element in parent.contents:
-                    element.replace_with(NavigableString(text_new.strip("'")))
+                    element.replace_with(NavigableString(text_new.strip("'").strip('"')))
         
         print("3. replace done")
 
