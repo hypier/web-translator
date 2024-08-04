@@ -8,19 +8,41 @@ from langchain_core.output_parsers import StrOutputParser
 dotenv.load_dotenv()
 
 
-def portkey_llm(model="openai/gpt-4o-mini", temperature=0.5):
+def portkey_llm():
+    # return portkey_llm_openai()
+    return portkey_llm_openrouter()
+
+
+def portkey_llm_openrouter(model="openai/gpt-4o-mini", temperature=0.5):
     PORTKEY_API_KEY = os.getenv("PORTKEY_API_KEY")
     OPEN_ROUTER_API_KEY = os.getenv("OPEN_ROUTER_API_KEY")
-    OPEN_ROUTER_URL = os.getenv("OPEN_ROUTER_URL")
 
     headers = createHeaders(provider="openrouter", api_key=PORTKEY_API_KEY)
-    # base_url = "http://localhost:8787/v1"
-    # base_url = OPEN_ROUTER_URL
     base_url = PORTKEY_GATEWAY_URL
-    # print(headers)
 
     chat = ChatOpenAI(model=model,
                       api_key=OPEN_ROUTER_API_KEY,
+                      base_url=base_url,
+                      default_headers=headers,
+                      temperature=temperature)
+    return chat
+
+
+def portkey_llm_openai(model="gpt-4o-mini", temperature=0.5):
+    PORTKEY_API_KEY = os.getenv("PORTKEY_API_KEY")
+    OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
+    congif = {
+        "retry": {
+            "attempts": 5
+        }
+    }
+
+    headers = createHeaders(provider="openai", api_key=PORTKEY_API_KEY, congif=congif)
+    base_url = "http://localhost:8787/v1"
+    # base_url = PORTKEY_GATEWAY_URL
+
+    chat = ChatOpenAI(model=model,
+                      api_key=OPENAI_API_KEY,
                       base_url=base_url,
                       default_headers=headers,
                       temperature=temperature)

@@ -3,6 +3,9 @@ from utils.markdown_spliter import split_text_v1
 
 
 def md_translate(content):
+    if not content:
+        return ""
+
     docs = split_text_v1(content.strip())
 
     translated_sentences = []
@@ -12,5 +15,3 @@ def md_translate(content):
         translated_sentences.append(translated_text.strip())
 
     return "\n\n".join(translated_sentences)
-
-#%%
