@@ -1,10 +1,10 @@
 ---
 custom_edit_url: https://github.com/langchain-ai/langchain/edit/master/docs/docs/integrations/tools/semanticscholar.ipynb
 ---
+
 # Semantic Scholar API Tool
 
-This notebook demos how to use the semantic scholar tool with an agent.
-
+本笔记本演示了如何使用语义学者工具与代理。
 
 ```python
 # start by installing semanticscholar api
@@ -62,11 +62,7 @@ agent_executor.invoke(
 )
 ```
 
+## 相关
 
-
-
-
-## Related
-
-- Tool [conceptual guide](/docs/concepts/#tools)
-- Tool [how-to guides](/docs/how_to/#tools)
+- 工具 [概念指南](/docs/concepts/#tools)
+- 工具 [操作指南](/docs/how_to/#tools)
