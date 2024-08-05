@@ -9,8 +9,8 @@ dotenv.load_dotenv()
 
 
 def portkey_llm():
-    # return portkey_llm_openai()
-    return portkey_llm_openrouter()
+    return portkey_llm_openai()
+    # return portkey_llm_openrouter()
 
 
 def portkey_llm_openrouter(model="openai/gpt-4o-mini", temperature=0.5):
@@ -38,8 +38,8 @@ def portkey_llm_openai(model="gpt-4o-mini", temperature=0.5):
     }
 
     headers = createHeaders(provider="openai", api_key=PORTKEY_API_KEY, congif=congif)
-    base_url = "http://localhost:8787/v1"
-    # base_url = PORTKEY_GATEWAY_URL
+    # base_url = "http://localhost:8787/v1"
+    base_url = PORTKEY_GATEWAY_URL
 
     chat = ChatOpenAI(model=model,
                       api_key=OPENAI_API_KEY,

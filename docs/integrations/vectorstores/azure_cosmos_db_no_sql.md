@@ -1,16 +1,16 @@
 ---
 custom_edit_url: https://github.com/langchain-ai/langchain/edit/master/docs/docs/integrations/vectorstores/azure_cosmos_db_no_sql.ipynb
 ---
+
 # Azure Cosmos DB No SQL
 
-This notebook shows you how to leverage this integrated [vector database](https://learn.microsoft.com/en-us/azure/cosmos-db/vector-database) to store documents in collections, create indicies and perform vector search queries using approximate nearest neighbor algorithms such as COS (cosine distance), L2 (Euclidean distance), and IP (inner product) to locate documents close to the query vectors. 
-    
-Azure Cosmos DB is the database that powers OpenAI's ChatGPT service. It offers single-digit millisecond response times, automatic and instant scalability, along with guaranteed speed at any scale. 
+本笔记本展示了如何利用这个集成的[向量数据库](https://learn.microsoft.com/en-us/azure/cosmos-db/vector-database)在集合中存储文档，创建索引，并使用近似最近邻算法（如COS（余弦距离）、L2（欧几里得距离）和IP（内积））执行向量搜索查询，以定位与查询向量接近的文档。
 
-[Azure Cosmos DB for NoSQL](https://learn.microsoft.com/en-us/azure/cosmos-db/nosql/vector-search) now offers vector indexing and search in preview. This feature is designed to handle high-dimensional vectors, enabling efficient and accurate vector search at any scale. You can now store vectors directly in the documents alongside your data. This means that each document in your database can contain not only traditional schema-free data, but also high-dimensional vectors as other properties of the documents. This colocation of data and vectors allows for efficient indexing and searching, as the vectors are stored in the same logical unit as the data they represent. This simplifies data management, AI application architectures, and the efficiency of vector-based operations.
+Azure Cosmos DB是支持OpenAI的ChatGPT服务的数据库。它提供单毫秒级的响应时间，自动和即时的可扩展性，以及在任何规模下的速度保证。
 
-[Sign Up](https://azure.microsoft.com/en-us/free/) for lifetime free access to get started today.
+[Azure Cosmos DB for NoSQL](https://learn.microsoft.com/en-us/azure/cosmos-db/nosql/vector-search)现在提供向量索引和搜索的预览功能。此功能旨在处理高维向量，使得在任何规模下都能高效且准确地进行向量搜索。您现在可以将向量直接存储在文档中，与您的数据一起。这意味着数据库中的每个文档不仅可以包含传统的无模式数据，还可以包含作为文档其他属性的高维向量。数据和向量的共存使得索引和搜索更加高效，因为向量与它们所代表的数据存储在同一逻辑单元中。这简化了数据管理、AI应用架构和基于向量操作的效率。
 
+[注册](https://azure.microsoft.com/en-us/free/)以获得终身免费访问权限，今天就开始吧。
 
 ```python
 %pip install --upgrade --quiet azure-cosmos langchain-openai langchain-community
@@ -28,13 +28,13 @@ OPENAI_EMBEDDINGS_MODEL_NAME = "text-embedding-ada-002"
 OPENAI_EMBEDDINGS_MODEL_DEPLOYMENT = "text-embedding-ada-002"
 ```
 
-## Insert Data
+## 插入数据
 
 
 ```python
 from langchain_community.document_loaders import PyPDFLoader
 
-# Load the PDF
+# 加载PDF
 loader = PyPDFLoader("https://arxiv.org/pdf/2303.08774.pdf")
 data = loader.load()
 ```
@@ -54,7 +54,8 @@ print(docs[0])
 ```output
 page_content='GPT-4 Technical Report\nOpenAI∗\nAbstract\nWe report the development of GPT-4, a large-scale, multimodal model which can\naccept image and text inputs and produce text outputs. While less capable than\nhumans in many real-world scenarios, GPT-4 exhibits human-level performance\non various professional and academic benchmarks, including passing a simulated\nbar exam with a score around the top 10% of test takers. GPT-4 is a Transformer-\nbased model pre-trained to predict the next token in a document. The post-training\nalignment process results in improved performance on measures of factuality and\nadherence to desired behavior. A core component of this project was developing\ninfrastructure and optimization methods that behave predictably across a wide\nrange of scales. This allowed us to accurately predict some aspects of GPT-4’s\nperformance based on models trained with no more than 1/1,000th the compute of\nGPT-4.\n1 Introduction' metadata={'source': 'https://arxiv.org/pdf/2303.08774.pdf', 'page': 0}
 ```
-## Creating AzureCosmosDB NoSQL Vector Search
+
+## 创建 AzureCosmosDB NoSQL 向量搜索
 
 
 ```python
@@ -101,7 +102,7 @@ openai_embeddings = AzureOpenAIEmbeddings(
     openai_api_key=OPENAI_API_KEY,
 )
 
-# insert the documents in AzureCosmosDBNoSql with their embedding
+# 将文档及其嵌入插入 AzureCosmosDBNoSql
 vector_search = AzureCosmosDBNoSqlVectorSearch.from_documents(
     documents=docs,
     embedding=openai_embeddings,
@@ -114,12 +115,12 @@ vector_search = AzureCosmosDBNoSqlVectorSearch.from_documents(
 )
 ```
 
-## Querying Data
+## 查询数据
 
 
 ```python
-# Perform a similarity search between the embedding of the query and the embeddings of the documents
-query = "What were the compute requirements for training GPT 4"
+# 在查询的嵌入与文档的嵌入之间执行相似性搜索
+query = "训练 GPT 4 的计算要求是什么"
 results = vector_search.similarity_search(query)
 
 print(results[0].page_content)
@@ -138,7 +139,8 @@ natural language text, particularly in more complex and nuanced scenarios. To te
 in such scenarios, GPT-4 was evaluated on a variety of exams originally designed for humans. In
 these evaluations it performs quite well and often outscores the vast majority of human test takers.
 ```
-## Similarity Search with Score
+
+## 相似性搜索与评分
 
 
 ```python
@@ -154,8 +156,7 @@ for result in results:
     print(result)
 ```
 
+## 相关
 
-## Related
-
-- Vector store [conceptual guide](/docs/concepts/#vector-stores)
-- Vector store [how-to guides](/docs/how_to/#vector-stores)
+- 向量存储 [概念指南](/docs/concepts/#vector-stores)
+- 向量存储 [操作指南](/docs/how_to/#vector-stores)

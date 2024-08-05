@@ -157,69 +157,7 @@ query = "What did the president say about Ketanji Brown Jackson"
 returned_docs = db_FaissFlat.similarity_search(query, k=k, filter=None)
 print_results(returned_docs, score=False)
 ```
-```output
---------------------------------------------------
 
-Content:
-	Tonight. I call on the Senate to: Pass the Freedom to Vote Act. Pass the John Lewis Voting Rights Act. And while you’re at it, pass the Disclose Act so Americans can know who is funding our elections. 
-
-Tonight, I’d like to honor someone who has dedicated his life to serve this country: Justice Stephen Breyer—an Army veteran, Constitutional scholar, and retiring Justice of the United States Supreme Court. Justice Breyer, thank you for your service. 
-
-One of the most serious constitutional responsibilities a President has is nominating someone to serve on the United States Supreme Court. 
-
-And I did that 4 days ago, when I nominated Circuit Court of Appeals Judge Ketanji Brown Jackson. One of our nation’s top legal minds, who will continue Justice Breyer’s legacy of excellence.
-
-Metadata:
-	id:	32
-	page_number:	32
-	president_included:	True
-	source:	../../how_to/state_of_the_union.txt
---------------------------------------------------
-
-Content:
-	As Frances Haugen, who is here with us tonight, has shown, we must hold social media platforms accountable for the national experiment they’re conducting on our children for profit. 
-
-It’s time to strengthen privacy protections, ban targeted advertising to children, demand tech companies stop collecting personal data on our children. 
-
-And let’s get all Americans the mental health services they need. More people they can turn to for help, and full parity between physical and mental health care. 
-
-Third, support our veterans. 
-
-Veterans are the best of us. 
-
-I’ve always believed that we have a sacred obligation to equip all those we send to war and care for them and their families when they come home. 
-
-My administration is providing assistance with job training and housing, and now helping lower-income veterans get VA care debt-free.  
-
-Our troops in Iraq and Afghanistan faced many dangers.
-
-Metadata:
-	id:	37
-	page_number:	37
-	president_included:	False
-	source:	../../how_to/state_of_the_union.txt
---------------------------------------------------
-
-Content:
-	A former top litigator in private practice. A former federal public defender. And from a family of public school educators and police officers. A consensus builder. Since she’s been nominated, she’s received a broad range of support—from the Fraternal Order of Police to former judges appointed by Democrats and Republicans. 
-
-And if we are to advance liberty and justice, we need to secure the Border and fix the immigration system. 
-
-We can do both. At our border, we’ve installed new technology like cutting-edge scanners to better detect drug smuggling.  
-
-We’ve set up joint patrols with Mexico and Guatemala to catch more human traffickers.  
-
-We’re putting in place dedicated immigration judges so families fleeing persecution and violence can have their cases heard faster. 
-
-We’re securing commitments and supporting partners in South and Central America to host more refugees and secure their own borders.
-
-Metadata:
-	id:	33
-	page_number:	33
-	president_included:	False
-	source:	../../how_to/state_of_the_union.txt
---------------------------------------------------
-```
 
 ```python
 # Query (with filtering)
@@ -229,76 +167,7 @@ query = "What did the president say about Ketanji Brown Jackson"
 returned_docs = db_FaissFlat.similarity_search(query, k=k, filter=constraints)
 print_results(returned_docs, score=False)
 ```
-```output
---------------------------------------------------
 
-Content:
-	Tonight. I call on the Senate to: Pass the Freedom to Vote Act. Pass the John Lewis Voting Rights Act. And while you’re at it, pass the Disclose Act so Americans can know who is funding our elections. 
-
-Tonight, I’d like to honor someone who has dedicated his life to serve this country: Justice Stephen Breyer—an Army veteran, Constitutional scholar, and retiring Justice of the United States Supreme Court. Justice Breyer, thank you for your service. 
-
-One of the most serious constitutional responsibilities a President has is nominating someone to serve on the United States Supreme Court. 
-
-And I did that 4 days ago, when I nominated Circuit Court of Appeals Judge Ketanji Brown Jackson. One of our nation’s top legal minds, who will continue Justice Breyer’s legacy of excellence.
-
-Metadata:
-	id:	32
-	page_number:	32
-	president_included:	True
-	source:	../../how_to/state_of_the_union.txt
---------------------------------------------------
-
-Content:
-	And for our LGBTQ+ Americans, let’s finally get the bipartisan Equality Act to my desk. The onslaught of state laws targeting transgender Americans and their families is wrong. 
-
-As I said last year, especially to our younger transgender Americans, I will always have your back as your President, so you can be yourself and reach your God-given potential. 
-
-While it often appears that we never agree, that isn’t true. I signed 80 bipartisan bills into law last year. From preventing government shutdowns to protecting Asian-Americans from still-too-common hate crimes to reforming military justice. 
-
-And soon, we’ll strengthen the Violence Against Women Act that I first wrote three decades ago. It is important for us to show the nation that we can come together and do big things. 
-
-So tonight I’m offering a Unity Agenda for the Nation. Four big things we can do together.  
-
-First, beat the opioid epidemic.
-
-Metadata:
-	id:	35
-	page_number:	35
-	president_included:	True
-	source:	../../how_to/state_of_the_union.txt
---------------------------------------------------
-
-Content:
-	Last month, I announced our plan to supercharge  
-the Cancer Moonshot that President Obama asked me to lead six years ago. 
-
-Our goal is to cut the cancer death rate by at least 50% over the next 25 years, turn more cancers from death sentences into treatable diseases.  
-
-More support for patients and families. 
-
-To get there, I call on Congress to fund ARPA-H, the Advanced Research Projects Agency for Health. 
-
-It’s based on DARPA—the Defense Department project that led to the Internet, GPS, and so much more.  
-
-ARPA-H will have a singular purpose—to drive breakthroughs in cancer, Alzheimer’s, diabetes, and more. 
-
-A unity agenda for the nation. 
-
-We can do this. 
-
-My fellow Americans—tonight , we have gathered in a sacred space—the citadel of our democracy. 
-
-In this Capitol, generation after generation, Americans have debated great questions amid great strife, and have done great things. 
-
-We have fought for freedom, expanded liberty, defeated totalitarianism and terror.
-
-Metadata:
-	id:	40
-	page_number:	40
-	president_included:	True
-	source:	../../how_to/state_of_the_union.txt
---------------------------------------------------
-```
 ### Similarity Search using Faiss IVFFlat and Inner Product (IP) Distance
 
 In this section, we add the documents to VDMS using Faiss IndexIVFFlat indexing and IP as the distance metric for similarity search. We search for three documents (`k=3`) related to the query `What did the president say about Ketanji Brown Jackson` and also return the score along with the document.
@@ -321,75 +190,7 @@ query = "What did the president say about Ketanji Brown Jackson"
 docs_with_score = db_FaissIVFFlat.similarity_search_with_score(query, k=k, filter=None)
 print_results(docs_with_score)
 ```
-```output
---------------------------------------------------
 
-Score:	1.2032090425
-
-Content:
-	Tonight. I call on the Senate to: Pass the Freedom to Vote Act. Pass the John Lewis Voting Rights Act. And while you’re at it, pass the Disclose Act so Americans can know who is funding our elections. 
-
-Tonight, I’d like to honor someone who has dedicated his life to serve this country: Justice Stephen Breyer—an Army veteran, Constitutional scholar, and retiring Justice of the United States Supreme Court. Justice Breyer, thank you for your service. 
-
-One of the most serious constitutional responsibilities a President has is nominating someone to serve on the United States Supreme Court. 
-
-And I did that 4 days ago, when I nominated Circuit Court of Appeals Judge Ketanji Brown Jackson. One of our nation’s top legal minds, who will continue Justice Breyer’s legacy of excellence.
-
-Metadata:
-	id:	32
-	page_number:	32
-	president_included:	True
-	source:	../../how_to/state_of_the_union.txt
---------------------------------------------------
-
-Score:	1.4952471256
-
-Content:
-	As Frances Haugen, who is here with us tonight, has shown, we must hold social media platforms accountable for the national experiment they’re conducting on our children for profit. 
-
-It’s time to strengthen privacy protections, ban targeted advertising to children, demand tech companies stop collecting personal data on our children. 
-
-And let’s get all Americans the mental health services they need. More people they can turn to for help, and full parity between physical and mental health care. 
-
-Third, support our veterans. 
-
-Veterans are the best of us. 
-
-I’ve always believed that we have a sacred obligation to equip all those we send to war and care for them and their families when they come home. 
-
-My administration is providing assistance with job training and housing, and now helping lower-income veterans get VA care debt-free.  
-
-Our troops in Iraq and Afghanistan faced many dangers.
-
-Metadata:
-	id:	37
-	page_number:	37
-	president_included:	False
-	source:	../../how_to/state_of_the_union.txt
---------------------------------------------------
-
-Score:	1.5008399487
-
-Content:
-	A former top litigator in private practice. A former federal public defender. And from a family of public school educators and police officers. A consensus builder. Since she’s been nominated, she’s received a broad range of support—from the Fraternal Order of Police to former judges appointed by Democrats and Republicans. 
-
-And if we are to advance liberty and justice, we need to secure the Border and fix the immigration system. 
-
-We can do both. At our border, we’ve installed new technology like cutting-edge scanners to better detect drug smuggling.  
-
-We’ve set up joint patrols with Mexico and Guatemala to catch more human traffickers.  
-
-We’re putting in place dedicated immigration judges so families fleeing persecution and violence can have their cases heard faster. 
-
-We’re securing commitments and supporting partners in South and Central America to host more refugees and secure their own borders.
-
-Metadata:
-	id:	33
-	page_number:	33
-	president_included:	False
-	source:	../../how_to/state_of_the_union.txt
---------------------------------------------------
-```
 ### Similarity Search using FLINNG and IP Distance
 
 In this section, we add the documents to VDMS using Filters to Identify Near-Neighbor Groups (FLINNG) indexing and IP as the distance metric for similarity search. We search for three documents (`k=3`) related to the query `What did the president say about Ketanji Brown Jackson` and also return the score along with the document.
@@ -411,75 +212,7 @@ query = "What did the president say about Ketanji Brown Jackson"
 docs_with_score = db_Flinng.similarity_search_with_score(query, k=k, filter=None)
 print_results(docs_with_score)
 ```
-```output
---------------------------------------------------
 
-Score:	1.2032090425
-
-Content:
-	Tonight. I call on the Senate to: Pass the Freedom to Vote Act. Pass the John Lewis Voting Rights Act. And while you’re at it, pass the Disclose Act so Americans can know who is funding our elections. 
-
-Tonight, I’d like to honor someone who has dedicated his life to serve this country: Justice Stephen Breyer—an Army veteran, Constitutional scholar, and retiring Justice of the United States Supreme Court. Justice Breyer, thank you for your service. 
-
-One of the most serious constitutional responsibilities a President has is nominating someone to serve on the United States Supreme Court. 
-
-And I did that 4 days ago, when I nominated Circuit Court of Appeals Judge Ketanji Brown Jackson. One of our nation’s top legal minds, who will continue Justice Breyer’s legacy of excellence.
-
-Metadata:
-	id:	32
-	page_number:	32
-	president_included:	True
-	source:	../../how_to/state_of_the_union.txt
---------------------------------------------------
-
-Score:	1.4952471256
-
-Content:
-	As Frances Haugen, who is here with us tonight, has shown, we must hold social media platforms accountable for the national experiment they’re conducting on our children for profit. 
-
-It’s time to strengthen privacy protections, ban targeted advertising to children, demand tech companies stop collecting personal data on our children. 
-
-And let’s get all Americans the mental health services they need. More people they can turn to for help, and full parity between physical and mental health care. 
-
-Third, support our veterans. 
-
-Veterans are the best of us. 
-
-I’ve always believed that we have a sacred obligation to equip all those we send to war and care for them and their families when they come home. 
-
-My administration is providing assistance with job training and housing, and now helping lower-income veterans get VA care debt-free.  
-
-Our troops in Iraq and Afghanistan faced many dangers.
-
-Metadata:
-	id:	37
-	page_number:	37
-	president_included:	False
-	source:	../../how_to/state_of_the_union.txt
---------------------------------------------------
-
-Score:	1.5008399487
-
-Content:
-	A former top litigator in private practice. A former federal public defender. And from a family of public school educators and police officers. A consensus builder. Since she’s been nominated, she’s received a broad range of support—from the Fraternal Order of Police to former judges appointed by Democrats and Republicans. 
-
-And if we are to advance liberty and justice, we need to secure the Border and fix the immigration system. 
-
-We can do both. At our border, we’ve installed new technology like cutting-edge scanners to better detect drug smuggling.  
-
-We’ve set up joint patrols with Mexico and Guatemala to catch more human traffickers.  
-
-We’re putting in place dedicated immigration judges so families fleeing persecution and violence can have their cases heard faster. 
-
-We’re securing commitments and supporting partners in South and Central America to host more refugees and secure their own borders.
-
-Metadata:
-	id:	33
-	page_number:	33
-	president_included:	False
-	source:	../../how_to/state_of_the_union.txt
---------------------------------------------------
-```
 ### Similarity Search using TileDBDense and Euclidean Distance
 
 In this section, we add the documents to VDMS using TileDB Dense indexing and L2 as the distance metric for similarity search. We search for three documents (`k=3`) related to the query `What did the president say about Ketanji Brown Jackson` and also return the score along with the document.
@@ -503,75 +236,7 @@ query = "What did the president say about Ketanji Brown Jackson"
 docs_with_score = db_tiledbD.similarity_search_with_score(query, k=k, filter=None)
 print_results(docs_with_score)
 ```
-```output
---------------------------------------------------
 
-Score:	1.2032090425
-
-Content:
-	Tonight. I call on the Senate to: Pass the Freedom to Vote Act. Pass the John Lewis Voting Rights Act. And while you’re at it, pass the Disclose Act so Americans can know who is funding our elections. 
-
-Tonight, I’d like to honor someone who has dedicated his life to serve this country: Justice Stephen Breyer—an Army veteran, Constitutional scholar, and retiring Justice of the United States Supreme Court. Justice Breyer, thank you for your service. 
-
-One of the most serious constitutional responsibilities a President has is nominating someone to serve on the United States Supreme Court. 
-
-And I did that 4 days ago, when I nominated Circuit Court of Appeals Judge Ketanji Brown Jackson. One of our nation’s top legal minds, who will continue Justice Breyer’s legacy of excellence.
-
-Metadata:
-	id:	32
-	page_number:	32
-	president_included:	True
-	source:	../../how_to/state_of_the_union.txt
---------------------------------------------------
-
-Score:	1.4952471256
-
-Content:
-	As Frances Haugen, who is here with us tonight, has shown, we must hold social media platforms accountable for the national experiment they’re conducting on our children for profit. 
-
-It’s time to strengthen privacy protections, ban targeted advertising to children, demand tech companies stop collecting personal data on our children. 
-
-And let’s get all Americans the mental health services they need. More people they can turn to for help, and full parity between physical and mental health care. 
-
-Third, support our veterans. 
-
-Veterans are the best of us. 
-
-I’ve always believed that we have a sacred obligation to equip all those we send to war and care for them and their families when they come home. 
-
-My administration is providing assistance with job training and housing, and now helping lower-income veterans get VA care debt-free.  
-
-Our troops in Iraq and Afghanistan faced many dangers.
-
-Metadata:
-	id:	37
-	page_number:	37
-	president_included:	False
-	source:	../../how_to/state_of_the_union.txt
---------------------------------------------------
-
-Score:	1.5008399487
-
-Content:
-	A former top litigator in private practice. A former federal public defender. And from a family of public school educators and police officers. A consensus builder. Since she’s been nominated, she’s received a broad range of support—from the Fraternal Order of Police to former judges appointed by Democrats and Republicans. 
-
-And if we are to advance liberty and justice, we need to secure the Border and fix the immigration system. 
-
-We can do both. At our border, we’ve installed new technology like cutting-edge scanners to better detect drug smuggling.  
-
-We’ve set up joint patrols with Mexico and Guatemala to catch more human traffickers.  
-
-We’re putting in place dedicated immigration judges so families fleeing persecution and violence can have their cases heard faster. 
-
-We’re securing commitments and supporting partners in South and Central America to host more refugees and secure their own borders.
-
-Metadata:
-	id:	33
-	page_number:	33
-	president_included:	False
-	source:	../../how_to/state_of_the_union.txt
---------------------------------------------------
-```
 ### Update and Delete
 
 While building toward a real application, you want to go beyond adding data, and also update and delete data.
@@ -606,40 +271,7 @@ response, response_array = db_FaissFlat.get(
 print(f"UPDATED ENTRY (id={id_to_update}):")
 print_response([response[0]["FindDescriptor"]["entities"][0]])
 ```
-```output
-Original metadata: 
-	{'id': '32', 'page_number': 32, 'president_included': True, 'source': '../../how_to/state_of_the_union.txt'}
-new metadata: 
-	{'id': '32', 'page_number': 32, 'president_included': True, 'source': '../../how_to/state_of_the_union.txt', 'last_date_read': {'_date': '2024-05-01T14:30:00'}}
---------------------------------------------------
 
-UPDATED ENTRY (id=32):
-
-content:
-	Tonight. I call on the Senate to: Pass the Freedom to Vote Act. Pass the John Lewis Voting Rights Act. And while you’re at it, pass the Disclose Act so Americans can know who is funding our elections. 
-
-Tonight, I’d like to honor someone who has dedicated his life to serve this country: Justice Stephen Breyer—an Army veteran, Constitutional scholar, and retiring Justice of the United States Supreme Court. Justice Breyer, thank you for your service. 
-
-One of the most serious constitutional responsibilities a President has is nominating someone to serve on the United States Supreme Court. 
-
-And I did that 4 days ago, when I nominated Circuit Court of Appeals Judge Ketanji Brown Jackson. One of our nation’s top legal minds, who will continue Justice Breyer’s legacy of excellence.
-
-id:
-	32
-
-last_date_read:
-	2024-05-01T14:30:00+00:00
-
-page_number:
-	32
-
-president_included:
-	True
-
-source:
-	../../how_to/state_of_the_union.txt
---------------------------------------------------
-```
 Next we will delete the last document by ID (id=42).
 
 
@@ -819,60 +451,7 @@ We can also use MMR directly.
 mmr_resp = db_FaissFlat.max_marginal_relevance_search_with_score(query, k=2, fetch_k=10)
 print_results(mmr_resp)
 ```
-```output
---------------------------------------------------
 
-Score:	1.2032091618
-
-Content:
-	Tonight. I call on the Senate to: Pass the Freedom to Vote Act. Pass the John Lewis Voting Rights Act. And while you’re at it, pass the Disclose Act so Americans can know who is funding our elections. 
-
-Tonight, I’d like to honor someone who has dedicated his life to serve this country: Justice Stephen Breyer—an Army veteran, Constitutional scholar, and retiring Justice of the United States Supreme Court. Justice Breyer, thank you for your service. 
-
-One of the most serious constitutional responsibilities a President has is nominating someone to serve on the United States Supreme Court. 
-
-And I did that 4 days ago, when I nominated Circuit Court of Appeals Judge Ketanji Brown Jackson. One of our nation’s top legal minds, who will continue Justice Breyer’s legacy of excellence.
-
-Metadata:
-	id:	32
-	last_date_read:	2024-05-01T14:30:00+00:00
-	page_number:	32
-	president_included:	True
-	source:	../../how_to/state_of_the_union.txt
---------------------------------------------------
-
-Score:	1.50705266
-
-Content:
-	But cancer from prolonged exposure to burn pits ravaged Heath’s lungs and body. 
-
-Danielle says Heath was a fighter to the very end. 
-
-He didn’t know how to stop fighting, and neither did she. 
-
-Through her pain she found purpose to demand we do better. 
-
-Tonight, Danielle—we are. 
-
-The VA is pioneering new ways of linking toxic exposures to diseases, already helping more veterans get benefits. 
-
-And tonight, I’m announcing we’re expanding eligibility to veterans suffering from nine respiratory cancers. 
-
-I’m also calling on Congress: pass a law to make sure veterans devastated by toxic exposures in Iraq and Afghanistan finally get the benefits and comprehensive health care they deserve. 
-
-And fourth, let’s end cancer as we know it. 
-
-This is personal to me and Jill, to Kamala, and to so many of you. 
-
-Cancer is the #2 cause of death in America–second only to heart disease.
-
-Metadata:
-	id:	39
-	page_number:	39
-	president_included:	False
-	source:	../../how_to/state_of_the_union.txt
---------------------------------------------------
-```
 ### Delete collection
 Previously, we removed documents based on its `id`. Here, all documents are removed since no ID is provided.
 
